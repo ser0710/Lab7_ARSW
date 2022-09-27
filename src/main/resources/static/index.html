@@ -10,23 +10,31 @@
         <link rel="stylesheet"
               href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
         <link rel="stylesheet" href="CSS/style.css">
-        <script src="JS/apimock.js"></script>
-        <script src="JS/app.js"></script>
+
     </head>
     <body>
         <div>
             <h1>Blueprints</h1>
-            <input>
-            <button>Get blueprints</button>
+            <input id="author">
+            <button onclick="app.getNameAuthorBlueprints()">Get blueprints</button>
         </div>
         <div>
-            <table>
+            <h2 id="name"></h2>
+            <table id="table">
+                <thead>
                 <tr>
                     <th>Blueprint name</th>
                     <th>Number of points</th>
+                    <th>Draw</th>
                 </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
             </table>
+            <h2 id="points">Total Points</h2>
         </div>
     </body>
-
+    <script src="JS/apimock.js"></script>
+    <script src="JS/app.js"></script>
 </html>

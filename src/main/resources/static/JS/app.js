@@ -1,30 +1,49 @@
-apimock=(function(){
+var apimock = apimock;
+var app = (function (){
+    var author;
+    var blueprintName;
 
-	var mockdata=[];
+    function getName() {
+            $("#name").text(author + "'s " + "blueprints:");
+        }
 
-	mockdata["johnconnor"]=	[{author:"johnconnor","points":[{"x":150,"y":120},{"x":215,"y":115}],"name":"house"},
-	 {author:"johnconnor","points":[{"x":340,"y":240},{"x":15,"y":215}],"name":"gear"},
-	 {author:"johnconnor","points":[{"x":34,"y":76},{"x":190,"y":71}],"name":"apto"}];
-	mockdata["maryweyland"]=[{author:"maryweyland","points":[{"x":140,"y":140},{"x":115,"y":115}],"name":"house2"},
-	 {author:"maryweyland","points":[{"x":140,"y":140},{"x":115,"y":115}],"name":"gear2"},
-	 {author:"maryweyland","points":[{"x":123,"y":89},{"x":10,"y":111}],"name":"apto2"}];
-	mockdata["EstebanQuito"] = [{author: "EstebanQuito", "points":[{"x":134,"y":86},{"x":125,"y":165}], "name": "house3"},
-	{author: "EstebanQuito", "points":[{"x":75,"y":12},{"x":210,"y":167}], "name": "gear3"}]
+     function getNameAuthorBlueprints() {
+        author = $("#author").val();
+        if (author === "") {
+            alert("Debe ingresar un nombre");
+        } else {
+            apimock.getBlueprintsByAuthor(author,parceroData);
+        }
+     }
 
+     var parceroData = function( data) {
+         $("#table tbody").empty();
+         if (data === undefined) {
+             alert("No existe el autor");
+             $("#name").empty();
+             //$("#user-points").empty();
+         } else {
+             getName();
+             const datanew = data.map((elemento) => {
+                 return {
+                     name: elemento.name,
+                     puntos: elemento.points.length
+                 }
+                 console.log(datanew);
+             });
 
-	return {
-		getBlueprintsByAuthor:function(authname,callback){
-			callback(
-				mockdata[authname]
-			);
-		},
+             datanew.map((elementos) => {
+                 $("#table > tbody:last").append($("<tr><td>" + elementos.name + "</td><td>" + elementos.puntos.toString() +
+                     "</td><td>" + "<button  id=" + elementos.name + ">open</button>" + "</td>"));
+             });
 
-		getBlueprintsByNameAndAuthor:function(authname,bpname,callback){
+             const totalPuntos = datanew.reduce((suma, {puntos}) => suma + puntos, 0);
 
-			callback(
-				mockdata[authname].find(function(e){return e.name===bpname})
-			);
-		}
-	}
+             $("#points").text(totalPuntos);
+            }
+         }
 
+     return{
+        getNameAuthorBlueprints: getNameAuthorBlueprints
+     }
 })();
