@@ -116,3 +116,10 @@
 13. Modifique el código de app.js de manera que sea posible cambiar entre el 'apimock' y el 'apiclient' con sólo una línea de código.
 
 14. Revise la [documentación y ejemplos de los estilos de Bootstrap](https://v4-alpha.getbootstrap.com/examples/) (ya incluidos en el ejercicio), agregue los elementos necesarios a la página para que sea más vistosa, y más cercana al mock dado al inicio del enunciado.
+    
+##Problemas presentados
+vemos como al correr el codigo y abriendolo en el browser, aparece como app esta llamando a apiclient, pero en el codigo original tenemos apimock, por tal motivo no encuentra ningun usuario con ese nombre
+    
+![image](https://user-images.githubusercontent.com/90010884/192907829-01e60224-3adf-46b8-8628-a5a8c2a06ceb.png)
+![image](https://user-images.githubusercontent.com/90010884/192907888-82f78d13-0da9-42d8-98a0-2bedde1cc447.png)
+
