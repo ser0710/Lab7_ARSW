@@ -29,7 +29,6 @@ var app = (function (){
                      name: elemento.name,
                      puntos: elemento.points.length
                  }
-                 console.log(datanew);
              });
 
              datanew.map((elementos) => {
