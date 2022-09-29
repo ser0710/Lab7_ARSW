@@ -44,7 +44,7 @@ var app = (function (){
          function getBlueprintByAuthorAndName(data) {
                  author = $("#author").val();
                  blueprintName = data.id;
-                 apimock.getBlueprintsByNameAndAuthor(blueprintName, author, pintaparcero);
+                 apimock.getBlueprintsByNameAndAuthor(author, blueprintName, pintaparcero);
              }
          function pintaparcero(data) {
          console.log("messichikito");
