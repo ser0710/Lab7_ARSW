@@ -123,3 +123,6 @@ vemos como al correr el codigo y abriendolo en el browser, aparece como app esta
 ![image](https://user-images.githubusercontent.com/90010884/192907829-01e60224-3adf-46b8-8628-a5a8c2a06ceb.png)
 ![image](https://user-images.githubusercontent.com/90010884/192908013-00278619-ff45-4751-b48b-1103e8e69478.png)
 
+si usamos otro browser funciona a medias, ya que colocamos varios .log y no los actualiza
+![image](https://user-images.githubusercontent.com/90010884/192912179-963f0638-bf35-4e2a-8252-bf01733de6f2.png)
+
