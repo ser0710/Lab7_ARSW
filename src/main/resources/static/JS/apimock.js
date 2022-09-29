@@ -28,6 +28,7 @@ apimock=(function(){
 		getBlueprintsByNameAndAuthor:function(authname,bpname,callback){
 
 			callback(
+//                console.log("jijijaja");
 				mockdata[authname].find(function(e){return e.name===bpname})
 			);
 		}
