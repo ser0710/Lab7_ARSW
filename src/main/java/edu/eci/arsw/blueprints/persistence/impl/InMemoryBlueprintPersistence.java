@@ -31,16 +31,16 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     public InMemoryBlueprintPersistence() {
         //load stub data
         Point[] pts0=new Point[]{new Point(140, 140),new Point(115, 115)};
-        Blueprint bp0=new Blueprint("EstebanQuito", "La catastrofe",pts0);
+        Blueprint bp0=new Blueprint("EstebanQuito", "LaCatastrofe",pts0);
         blueprints.put(new Tuple<>(bp0.getAuthor(),bp0.getName()), bp0);
-        Point[] pts1=new Point[]{new Point(140, 140),new Point(115, 115)};
-        Blueprint bp1=new Blueprint("EstebanQuito", "Lo caotico",pts1);
+        Point[] pts1=new Point[]{new Point(23, 85),new Point(12, 118)};
+        Blueprint bp1=new Blueprint("EstebanQuito", "LoCaotico",pts1);
         blueprints.put(new Tuple<>(bp1.getAuthor(),bp1.getName()), bp1);
-        Point[] pts2=new Point[]{new Point(140, 140),new Point(115, 115)};
-        Blueprint bp2=new Blueprint("Panda", "El escandaloso",pts2);
+        Point[] pts2=new Point[]{new Point(32, 17),new Point(54, 86)};
+        Blueprint bp2=new Blueprint("Panda", "ElEscandaloso",pts2);
         blueprints.put(new Tuple<>(bp2.getAuthor(),bp2.getName()), bp2);
-        Point[] pts3=new Point[]{new Point(140, 140),new Point(115, 115)};
-        Blueprint bp3=new Blueprint("Hit de mango", "Sin saborizantes",pts3);
+        Point[] pts3=new Point[]{new Point(342, 1),new Point(2, 343)};
+        Blueprint bp3=new Blueprint("Hit de mango", "SinSaborizantes",pts3);
         blueprints.put(new Tuple<>(bp3.getAuthor(),bp3.getName()), bp3);
         
     }    

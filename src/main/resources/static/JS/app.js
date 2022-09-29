@@ -1,4 +1,4 @@
-var apimock = apimock;
+var apiclient = apiclient;
 var app = (function (){
     var author;
     var blueprintName;
@@ -12,7 +12,7 @@ var app = (function (){
         if (author === "") {
             alert("Debe ingresar un nombre");
         } else {
-            apimock.getBlueprintsByAuthor(author,parceroData);
+            apiclient.getBlueprintsByAuthor(author,parceroData);
         }
      }
 
@@ -44,10 +44,9 @@ var app = (function (){
          function getBlueprintByAuthorAndName(data) {
                  author = $("#author").val();
                  blueprintName = data.id;
-                 apimock.getBlueprintsByNameAndAuthor(author, blueprintName, pintaparcero);
+                 apiclient.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
              }
          function pintaparcero(data) {
-         console.log("messichikito");
 //                 getBluePrintName();
                  const puntos = data.points;
                  var c = document.getElementById("myCanvas");
