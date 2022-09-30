@@ -1,4 +1,6 @@
-var apiclient = apiclient;
+var apimock = apimock;
+//para apiclient es cambiar
+//todo lo q dice apimock a apiclient :)
 var app = (function (){
     var author;
     var blueprintName;
@@ -12,7 +14,7 @@ var app = (function (){
         if (author === "") {
             alert("Debe ingresar un nombre");
         } else {
-            apiclient.getBlueprintsByAuthor(author,parceroData);
+            apimock.getBlueprintsByAuthor(author,parceroData);
         }
      }
 
@@ -22,6 +24,7 @@ var app = (function (){
              alert("No existe el autor");
              $("#name").empty();
              $("#points").text("Total Points");
+             $("#nameblu").empty();
          } else {
              getName();
              const datanew = data.map((elemento) => {
@@ -38,13 +41,14 @@ var app = (function (){
 
              const totalPuntos = datanew.reduce((suma, {puntos}) => suma + puntos, 0);
 
-             $("#points").text(totalPuntos);
+             $("#points").text("Total user points: " + totalPuntos);
             }
          }
          function getBlueprintByAuthorAndName(data) {
                  author = $("#author").val();
                  blueprintName = data.id;
-                 apiclient.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
+                 $("#nameblu").text("Current blueprint: " + blueprintName);
+                 apimock.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
              }
          function pintaparcero(data) {
 //                 getBluePrintName();

@@ -7,7 +7,6 @@ var apiclient = (function(){
 
         getBlueprintByAuthorAndName: function(author, bpname, callback){
         var link = author + "/" + bpname;
-        console.log(link);
         callback(
             JSON.parse($.ajax({type: 'GET', url: 'blueprints/' + link, async: false}).responseText)
         )}
