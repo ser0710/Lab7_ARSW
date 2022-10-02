@@ -10,13 +10,18 @@ apimock=(function(){
     mockdata["maryweyland"]=[{author:"maryweyland","points":[{"x":140,"y":140},{"x":115,"y":115}],"name":"house2"},
     	 {author:"maryweyland","points":[{"x":140,"y":140},{"x":115,"y":115}],"name":"gear2"},
     	 {author:"maryweyland","points":[{"x":123,"y":89},{"x":10,"y":111}],"name":"apto2"}];
-    mockdata["EstebanQuito"] = [{author: "EstebanQuito", "points":[{"x":134,"y":86},{"x":125,"y":165}], "name": "house3"},
+    mockdata["EstebanQuito"] = [{author: "EstebanQuito", "points":[{"x":134,"y":86},{"x":125,"y":165},{"x":77, "y":10}], "name": "house3"},
     	{author: "EstebanQuito", "points":[{"x":75,"y":12},{"x":210,"y":167}], "name": "gear3"}];
     mockdata["Prueba"] = [{author: "Prueba", "points":[{"x":137,"y":82},{"x":123,"y":161}], "name": "house4"},
             	{author: "Prueba", "points":[{"x":75,"y":12},{"x":210,"y":167}], "name": "gear4"}];
 
+    function addPoints(x, y, author, bpname){
+        var insert = {"x": x, "y":y};
+        mockdata[author].find(function(e){return e.name===bpname}).points.push(insert);
+    }
 
 	return {
+	    addPoints : addPoints,
 
 		getBlueprintsByAuthor:function(authname,callback){
 

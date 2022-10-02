@@ -16,33 +16,34 @@
 
     </head>
     <body>
-    <h1 class="titulo">Blueprints</h1>
-        <div class="autor">
-            <span>Author</span><input id="author">
-            <button onclick="app.getNameAuthorBlueprints()">Get blueprints</button>
-        </div>
-        <div class="grid">
-            <div class="tabla">
-                <h2 id="name"></h2>
-                <table id="table">
-                    <thead>
-                    <tr>
-                        <th>Blueprint name</th>
-                        <th>Number of points</th>
-                        <th>Draw</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+<!--        <body onload="app.init()">-->
+        <h1 class="titulo">Blueprints</h1>
+            <div class="autor">
+                <span>Author</span><input id="author">
+                <button onclick="app.getNameAuthorBlueprints()">Get blueprints</button>
+            </div>
+            <div class="grid">
+                <div class="tabla">
+                    <h2 id="name"></h2>
+                    <table id="table">
+                        <thead>
+                        <tr>
+                            <th>Blueprint name</th>
+                            <th>Number of points</th>
+                            <th>Draw</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                    </tbody>
-                </table>
-                <h2 id="points">Total Points</h2>
+                        </tbody>
+                    </table>
+                    <h2 id="points">Total Points</h2>
+                </div>
+                <div class="canva">
+                    <h2 id="nameblu"></h2>
+                    <canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;" onclick="app.init()"></canvas>
+                </div>
             </div>
-            <div class="canva">
-                <h2 id="nameblu"></h2>
-                <canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;"></canvas>
-            </div>
-        </div>
     </body>
     <script src="JS/apimock.js"></script>
     <script src="JS/app.js"></script>

@@ -4,6 +4,8 @@ var apimock = apimock;
 var app = (function (){
     var author;
     var blueprintName;
+    var canvas = document.getElementById("myCanvas"),
+        context = canvas.getContext("2d");
 
     function getName() {
             $("#name").text(author + "'s " + "blueprints:");
@@ -50,13 +52,12 @@ var app = (function (){
                  $("#nameblu").text("Current blueprint: " + blueprintName);
                  apimock.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
              }
+
          function pintaparcero(data) {
-//                 getBluePrintName();
                  const puntos = data.points;
                  var c = document.getElementById("myCanvas");
                  var ctx = c.getContext("2d");
                  ctx.clearRect(0, 0, c.width, c.height);
-                 ctx.restore();
                  ctx.beginPath();
                  for (let i = 1; i < puntos.length; i++) {
                      ctx.moveTo(puntos[i - 1].x, puntos[i - 1].y);
@@ -67,9 +68,34 @@ var app = (function (){
                      }
                  }
                  ctx.stroke();
+
              }
 
+         function init(){
+             let coords = canvas.getBoundingClientRect();
+             canvas.addEventListener("mousedown", function(event){
+                 apimock.addPoints((event.clientX - (screen.width/2)), (event.clientY - Math.round(coords.top) - 1), author, blueprintName);
+                 getNameAuthorBlueprints();
+                 apimock.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
+                 alert('mousedown at '+(event.clientX - (screen.width/2)) +','+ (event.clientY - Math.round(coords.top) - 1));
+             });
+         }
+
      return{
+//        init:function(){
+//            if(window.PointerEvent){
+//                canvas.addEventListener("pointerdown", function(event){
+//                          alert('pointerdown at '+event.pageX+','+event.pageY);
+//            });
+//        } else {
+//            canvas.addEventListener("mousedown", function(event){
+//                                alert('mousedown at '+event.clientX+','+event.clientY);
+//            });
+//            }
+//        },
+
+
+        init: init,
         getBlueprintByAuthorAndName:getBlueprintByAuthorAndName,
         getNameAuthorBlueprints: getNameAuthorBlueprints
      }
