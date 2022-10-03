@@ -62,23 +62,20 @@ var app = (function (){
                  for (let i = 1; i < puntos.length; i++) {
                      ctx.moveTo(puntos[i - 1].x, puntos[i - 1].y);
                      ctx.lineTo(puntos[i].x, puntos[i].y);
-                     if (i === puntos.length - 1) {
-                         ctx.moveTo(puntos[i].x, puntos[i].y);
-                         ctx.lineTo(puntos[0].x, puntos[0].y);
-                     }
+//                     if (i === puntos.length - 1) {
+//                         ctx.moveTo(puntos[i].x, puntos[i].y);
+//                         ctx.lineTo(puntos[0].x, puntos[0].y);
+//                     }
                  }
                  ctx.stroke();
 
              }
 
          function init(){
-             let coords = canvas.getBoundingClientRect();
-             canvas.addEventListener("mousedown", function(event){
-                 apimock.addPoints((event.clientX - (screen.width/2)), (event.clientY - Math.round(coords.top) - 1), author, blueprintName);
-                 getNameAuthorBlueprints();
-                 apimock.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
-                 alert('mousedown at '+(event.clientX - (screen.width/2)) +','+ (event.clientY - Math.round(coords.top) - 1));
-             });
+            let coords = canvas.getBoundingClientRect();
+            apimock.addPoints((event.clientX - (screen.width/2)), (event.clientY - Math.round(coords.top) - 1), author, blueprintName);
+            getNameAuthorBlueprints();
+            apimock.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
          }
 
      return{
@@ -94,8 +91,7 @@ var app = (function (){
 //            }
 //        },
 
-
-        init: init,
+        init,init,
         getBlueprintByAuthorAndName:getBlueprintByAuthorAndName,
         getNameAuthorBlueprints: getNameAuthorBlueprints
      }
