@@ -34,11 +34,10 @@ var apiclient = (function(){
         },
 
         createBp: function(author, bpName, callback){
-            var link = author;
-            var datos = JSON.stringify({author:author,"points":[{"x": 0, "y": 0}],"name":bpName});
+            var datos = JSON.stringify({author:author,"points":[{}],"name":bpName});
             console.log(datos);
             $.ajax({
-                url: "blueprints/"+link,
+                url: "blueprints/",
                 type: "POST",
                 data: datos,
                 contentType: "application/json"

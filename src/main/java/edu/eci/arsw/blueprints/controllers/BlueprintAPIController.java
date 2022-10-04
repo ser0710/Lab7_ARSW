@@ -74,8 +74,8 @@ public class BlueprintAPIController {
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> postBlueprint(@RequestBody Blueprint blueprint){
-        System.out.println(blueprint.getName());
         try {
+//            System.out.println(blueprint.getName());
             bps.addNewBlueprint(blueprint);
             //registrar dato
             return new ResponseEntity<>(HttpStatus.CREATED);
