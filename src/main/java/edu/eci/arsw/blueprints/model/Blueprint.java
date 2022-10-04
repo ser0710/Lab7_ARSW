@@ -11,14 +11,15 @@ public class Blueprint {
 
     private String author=null;
     
-    private List<Point> points=null;
+    private ArrayList<Point> points=null;
     
     private String name=null;
             
     public Blueprint(String author,String name,Point[] pnts){
         this.author=author;
         this.name=name;
-        points=Arrays.asList(pnts);
+        List<Point> pointstest = Arrays.asList(pnts);
+        points = new ArrayList<>(pointstest);
     }
          
     public Blueprint(String author, String name){
@@ -96,7 +97,7 @@ public class Blueprint {
     }
 
     public void setPoints(List<Point> points){
-        this.points = points;
+        this.points = (ArrayList<Point>) points;
     }
     
     

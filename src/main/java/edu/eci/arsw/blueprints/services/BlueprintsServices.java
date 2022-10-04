@@ -11,6 +11,7 @@ import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.FileHandler;
@@ -66,5 +67,12 @@ public class BlueprintsServices {
     public Blueprint redundantFilter(Blueprint bp){
         return fil.filtro(bp);
     }
-    
+
+    public void updatePoints(String author, String bpname, List<Point> points) {
+        bpp.updatePoints(author, bpname, points);
+    }
+
+    public void deleteBlueprint(String author, String bpname) {
+        bpp.deleteBlueprint(author, bpname);
+    }
 }

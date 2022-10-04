@@ -13,10 +13,7 @@ import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.ObjectError;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -80,6 +77,17 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
                 bpba.add(blueprints.get(i));
         }
         return bpba;
+    }
+
+    @Override
+    public void updatePoints(String author, String bpname, List<Point> points) {
+        Blueprint b = blueprints.get(new Tuple<>(author, bpname));
+        b.addPoint(points.get(0));
+    }
+
+    @Override
+    public void deleteBlueprint(String author, String bpname) {
+        blueprints.remove(new Tuple<>(author, bpname));
     }
 
 

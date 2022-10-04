@@ -74,6 +74,7 @@ public class BlueprintAPIController {
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> postBlueprint(@RequestBody Blueprint blueprint){
+        System.out.println(blueprint.getName());
         try {
             bps.addNewBlueprint(blueprint);
             //registrar dato
@@ -87,10 +88,18 @@ public class BlueprintAPIController {
 
     @RequestMapping(path = "/{author}/{bpname}", method = RequestMethod.PUT,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> putBlueprint(@PathVariable String author, @PathVariable String bpname, @RequestBody Blueprint blueprint) throws BlueprintNotFoundException {
-        Blueprint blueprint1 = bps.getBlueprint(author, bpname);
-        blueprint1.setAuthor(blueprint.getAuthor());
-        blueprint1.setName(blueprint.getName());
-        blueprint1.setPoints(blueprint.getPoints());
+//        Blueprint blueprint1 = bps.getBlueprint(author, bpname);
+//        blueprint1.setAuthor(blueprint.getAuthor());
+//        blueprint1.setName(blueprint.getName());
+//        System.out.println(blueprint.getPoints().get(0).getX());
+//        blueprint1.addPoint(blueprint.getPoints().get(0));
+        bps.updatePoints(author, bpname, blueprint.getPoints());
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @RequestMapping(path = "/{author}/{bpname}", method = RequestMethod.DELETE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> deleteBlueprint(@PathVariable String author, @PathVariable String bpname) throws BlueprintNotFoundException {
+        bps.deleteBlueprint(author, bpname);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 

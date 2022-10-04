@@ -1,4 +1,4 @@
-var apimock = apimock;
+var apiclient = apiclient;
 //para apiclient es cambiar
 //todo lo q dice apimock a apiclient :)
 var app = (function (){
@@ -16,7 +16,7 @@ var app = (function (){
         if (author === "") {
             alert("Debe ingresar un nombre");
         } else {
-            apimock.getBlueprintsByAuthor(author,parceroData);
+            apiclient.getBlueprintsByAuthor(author,parceroData);
         }
      }
 
@@ -50,7 +50,7 @@ var app = (function (){
                  author = $("#author").val();
                  blueprintName = data.id;
                  $("#nameblu").text("Current blueprint: " + blueprintName);
-                 apimock.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
+                 apiclient.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
              }
 
          function pintaparcero(data) {
@@ -70,27 +70,37 @@ var app = (function (){
                  ctx.stroke();
 
              }
+         function fun(){
+         }
 
          function init(){
             let coords = canvas.getBoundingClientRect();
-            apimock.addPoints((event.clientX - (screen.width/2)), (event.clientY - Math.round(coords.top) - 1), author, blueprintName);
+            apiclient.addPoints((event.clientX - (screen.width/2)), (event.clientY - Math.round(coords.top) - 1), author, blueprintName, getNameAuthorBlueprints);
+//            getNameAuthorBlueprints();
+            apiclient.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
+         }
+
+         function deleteBp(){
+            apiclient.deleteBp(author, blueprintName, deleteCanvas);
             getNameAuthorBlueprints();
-            apimock.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
+         }
+
+         function deleteCanvas(){
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.clearRect(0, 0, c.width, c.height);
+
+         }
+
+         function createBp(){
+            var bpName = prompt("texto", "");
+
+            apiclient.createBp(author, bpName, getNameAuthorBlueprints);
          }
 
      return{
-//        init:function(){
-//            if(window.PointerEvent){
-//                canvas.addEventListener("pointerdown", function(event){
-//                          alert('pointerdown at '+event.pageX+','+event.pageY);
-//            });
-//        } else {
-//            canvas.addEventListener("mousedown", function(event){
-//                                alert('mousedown at '+event.clientX+','+event.clientY);
-//            });
-//            }
-//        },
-
+        createBp: createBp,
+        deleteBp: deleteBp,
         init,init,
         getBlueprintByAuthorAndName:getBlueprintByAuthorAndName,
         getNameAuthorBlueprints: getNameAuthorBlueprints

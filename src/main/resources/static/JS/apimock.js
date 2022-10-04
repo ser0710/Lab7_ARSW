@@ -15,26 +15,22 @@ apimock=(function(){
     mockdata["Prueba"] = [{author: "Prueba", "points":[{"x":137,"y":82},{"x":123,"y":161}], "name": "house4"},
             	{author: "Prueba", "points":[{"x":75,"y":12},{"x":210,"y":167}], "name": "gear4"}];
 
-    function addPoints(x, y, author, bpname){
+    function addPoints(x, y, author, bpname, callback){
         var insert = {"x": x, "y":y};
         mockdata[author].find(function(e){return e.name===bpname}).points.push(insert);
+        callback();
     }
 
 	return {
 	    addPoints : addPoints,
 
 		getBlueprintsByAuthor:function(authname,callback){
-
-			callback(
-				mockdata[authname]
-			);
+			callback(mockdata[authname]);
 		},
 
 		getBlueprintByAuthorAndName:function(authname,bpname,callback){
 
-			callback(
-				mockdata[authname].find(function(e){return e.name===bpname})
-			);
+			callback(mockdata[authname].find(function(e){return e.name===bpname}));
 		}
 	}
 
