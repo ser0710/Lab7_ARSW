@@ -80,9 +80,16 @@ var app = (function (){
             apiclient.getBlueprintByAuthorAndName(author, blueprintName, pintaparcero);
          }
 
-         function deleteBp(){
-            apiclient.deleteBp(author, blueprintName, deleteCanvas);
-            getNameAuthorBlueprints();
+//         function deleteBp(){
+//            apiclient.deleteBp(author, blueprintName, fun).then(deleteCanvas).then(getNameAuthorBlueprints)
+////            getNameAuthorBlueprints();
+//         }
+        function deleteBp(){
+         apiclient.deleteBp(author, blueprintName).then(() => {
+         deleteCanvas();
+         getNameAuthorBlueprints();
+         })
+         .catch(err => console.log(err))
          }
 
          function deleteCanvas(){
@@ -93,10 +100,17 @@ var app = (function (){
          }
 
          function createBp(){
-            var bpName = prompt("texto", "");
-
-            apiclient.createBp(author, bpName, getNameAuthorBlueprints);
+            var bpName = prompt("Por favor digite el nombre del plano", "")
+            apiclient.createBp(author, bpName).then(()=>{
+                getNameAuthorBlueprints();
+            })
+            .catch(err => console.log(err))
          }
+//        const promiseCreate = new Promise(function createBp(){
+//                                                      var bpName = prompt("Por favor digite el nombre del plano", "");
+//                                                      apiclient.createBp(author, bpName, fun)});
+
+
 
      return{
         createBp: createBp,

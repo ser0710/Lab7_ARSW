@@ -23,26 +23,28 @@ var apiclient = (function(){
         callback();
         },
 
-        deleteBp: function(author, blueprintName, callback){
-            var link = author + "/" + blueprintName;
-            $.ajax({
-                url: "blueprints/"+link,
-                type: 'DELETE'
-
-            });
-            callback();
+        deleteBp:function(author,blueprintName){
+            return new Promise(function(resolve,reject){
+                resolve(
+                    $.ajax({
+                        url: "blueprints/"+author + "/" + blueprintName,
+                        type: 'DELETE'
+                    })
+                )
+            })
         },
 
-        createBp: function(author, bpName, callback){
-            var datos = JSON.stringify({author:author,"points":[{}],"name":bpName});
-            console.log(datos);
-            $.ajax({
-                url: "blueprints/",
-                type: "POST",
-                data: datos,
-                contentType: "application/json"
-            })
-            callback();
+        createBp: function(author, bpName){
+            var datos = JSON.stringify({author:author,"points":[],"name":bpName});
+            return new Promise(function(resolve,reject){
+                resolve(
+                    $.ajax({
+                        url: "blueprints/",
+                        type: "POST",
+                        data: datos,
+                        contentType: "application/json"
+                    })
+                )})
         }
     }
 })();
